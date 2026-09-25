@@ -1,0 +1,88 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+    
+    function isPatient() {
+      return isAuthenticated() && getUserData().role == 'PATIENT';
+    }
+    
+    function isDoctor() {
+      return isAuthenticated() && getUserData().role == 'DOCTOR';
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && getUserData().role == 'ADMIN';
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+    }
+
+    // Patients Collection
+    match /patients/{patientId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isAuthenticated() && (resource.data.userId == request.auth.uid || isDoctor() || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // Allergies Collection
+    match /allergies/{allergyId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    // Conditions Collection
+    match /conditions/{conditionId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    // Prescriptions Collection
+    match /prescriptions/{prescriptionId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    // Lab Reports Collection
+    match /lab_reports/{labId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    // Emergency Contacts Collection
+    match /emergency_contacts/{contactId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    // Health Cards Collection
+    match /health_cards/{cardId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    // QR Tokens Collection (Public read allowed for active unrevoked emergency lookup)
+    match /qr_tokens/{tokenId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    // Audit Logs Collection
+    match /audit_logs/{logId} {
+      allow read: if isAuthenticated();
+      allow create: if true; // Allow logging emergency QR access
+      allow update, delete: if false; // Audit logs are append-only
+    }
+  }
+}
