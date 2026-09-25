@@ -262,7 +262,7 @@ export const MOCK_PATIENTS: Patient[] = [
 // ── Allergies ─────────────────────────────────────────────────────────────────
 
 export const MOCK_ALLERGIES: Allergy[] = [
-  // Priya Mehta
+  // Priya Mehta (patient-001)
   {
     id: 'allergy-001',
     patientId: 'patient-001',
@@ -289,7 +289,7 @@ export const MOCK_ALLERGIES: Allergy[] = [
     severity: 'MILD',
     firstDetected: '2015-01-01',
   },
-  // Arjun Singh
+  // Arjun Singh (patient-002)
   {
     id: 'allergy-004',
     patientId: 'patient-002',
@@ -306,12 +306,100 @@ export const MOCK_ALLERGIES: Allergy[] = [
     firstDetected: '2019-04-10',
     notes: 'Nausea and vomiting.',
   },
+  // Ravi Kumar (patient-004)
+  {
+    id: 'allergy-006',
+    patientId: 'patient-004',
+    allergyType: 'Drug',
+    substance: 'Penicillin',
+    severity: 'SEVERE',
+    firstDetected: '2010-06-15',
+    notes: 'Severe anaphylaxis history. Cross-reactivity with all penicillins and beta-lactams.',
+  },
+  {
+    id: 'allergy-007',
+    patientId: 'patient-004',
+    allergyType: 'Food',
+    substance: 'Shellfish',
+    severity: 'MODERATE',
+    firstDetected: '2015-08-20',
+  },
+  // Anita Sharma (patient-005)
+  {
+    id: 'allergy-008',
+    patientId: 'patient-005',
+    allergyType: 'Food',
+    substance: 'Peanuts',
+    severity: 'MODERATE',
+    firstDetected: '2018-03-22',
+  },
+  // Karan Singh (patient-007)
+  {
+    id: 'allergy-009',
+    patientId: 'patient-007',
+    allergyType: 'Food',
+    substance: 'Seafood',
+    severity: 'SEVERE',
+    firstDetected: '1999-07-19',
+  },
+  // Manoj Das (patient-008)
+  {
+    id: 'allergy-010',
+    patientId: 'patient-008',
+    allergyType: 'Drug',
+    substance: 'Sulfa Drugs',
+    severity: 'SEVERE',
+    firstDetected: '2012-08-14',
+  },
+  {
+    id: 'allergy-011',
+    patientId: 'patient-008',
+    allergyType: 'Drug',
+    substance: 'Ibuprofen',
+    severity: 'MODERATE',
+    firstDetected: '2019-04-11',
+    notes: 'Severe gastric mucosal bleeding and hypersensitivity.',
+  },
+  // Vikram Iyer (patient-010)
+  {
+    id: 'allergy-012',
+    patientId: 'patient-010',
+    allergyType: 'Drug',
+    substance: 'Warfarin',
+    severity: 'SEVERE',
+    firstDetected: '2017-04-21',
+  },
+  // Rajesh Gupta (patient-011)
+  {
+    id: 'allergy-013',
+    patientId: 'patient-011',
+    allergyType: 'Drug',
+    substance: 'Penicillin',
+    severity: 'SEVERE',
+    firstDetected: '2015-06-10',
+  },
+  {
+    id: 'allergy-014',
+    patientId: 'patient-011',
+    allergyType: 'Food',
+    substance: 'Shellfish',
+    severity: 'MODERATE',
+    firstDetected: '2018-09-22',
+  },
+  {
+    id: 'allergy-015',
+    patientId: 'patient-011',
+    allergyType: 'Drug',
+    substance: 'Sulfa Drugs',
+    severity: 'SEVERE',
+    firstDetected: '2020-03-14',
+  },
 ];
 
 // ── Conditions ────────────────────────────────────────────────────────────────
 
 export const MOCK_CONDITIONS: Condition[] = [
-  // Priya Mehta — HIGH RISK profile
+  // Priya Mehta (patient-001)
   {
     id: 'condition-001',
     patientId: 'patient-001',
@@ -336,7 +424,7 @@ export const MOCK_CONDITIONS: Condition[] = [
     diagnosedSince: '2022',
     status: 'MANAGED',
   },
-  // Arjun Singh
+  // Arjun Singh (patient-002)
   {
     id: 'condition-004',
     patientId: 'patient-002',
@@ -361,7 +449,7 @@ export const MOCK_CONDITIONS: Condition[] = [
     diagnosedSince: '2020',
     status: 'ONGOING',
   },
-  // Sunita Patel
+  // Sunita Patel (patient-003)
   {
     id: 'condition-007',
     patientId: 'patient-003',
@@ -370,15 +458,124 @@ export const MOCK_CONDITIONS: Condition[] = [
     diagnosedSince: '2023',
     status: 'MANAGED',
   },
+  // Ravi Kumar (patient-004)
+  {
+    id: 'condition-008',
+    patientId: 'patient-004',
+    condition: 'Type 2 Diabetes',
+    chronic: true,
+    diagnosedSince: '2019',
+    status: 'ONGOING',
+  },
+  {
+    id: 'condition-009',
+    patientId: 'patient-004',
+    condition: 'Hypertension',
+    chronic: true,
+    diagnosedSince: '2021',
+    status: 'ONGOING',
+  },
+  // Anita Sharma (patient-005)
+  {
+    id: 'condition-010',
+    patientId: 'patient-005',
+    condition: 'Asthma',
+    chronic: true,
+    diagnosedSince: '2015',
+    status: 'ONGOING',
+  },
+  // Neha Verma (patient-006)
+  {
+    id: 'condition-011',
+    patientId: 'patient-006',
+    condition: 'Hypothyroidism',
+    chronic: true,
+    diagnosedSince: '2020',
+    status: 'ONGOING',
+  },
+  // Karan Singh (patient-007)
+  {
+    id: 'condition-012',
+    patientId: 'patient-007',
+    condition: 'Heart Disease',
+    chronic: true,
+    diagnosedSince: '2010',
+    status: 'ONGOING',
+  },
+  {
+    id: 'condition-013',
+    patientId: 'patient-007',
+    condition: 'High Cholesterol',
+    chronic: true,
+    diagnosedSince: '2012',
+    status: 'ONGOING',
+  },
+  // Manoj Das (patient-008)
+  {
+    id: 'condition-014',
+    patientId: 'patient-008',
+    condition: 'Type 2 Diabetes',
+    chronic: true,
+    diagnosedSince: '2016',
+    status: 'ONGOING',
+  },
+  // Sneha Roy (patient-009)
+  {
+    id: 'condition-015',
+    patientId: 'patient-009',
+    condition: 'Migraine',
+    chronic: false,
+    diagnosedSince: '2022',
+    status: 'MANAGED',
+  },
+  // Vikram Iyer (patient-010)
+  {
+    id: 'condition-016',
+    patientId: 'patient-010',
+    condition: 'Arthritis',
+    chronic: true,
+    diagnosedSince: '2014',
+    status: 'ONGOING',
+  },
+  // Rajesh Gupta (patient-011)
+  {
+    id: 'condition-017',
+    patientId: 'patient-011',
+    condition: 'Heart Disease',
+    chronic: true,
+    diagnosedSince: '2016',
+    status: 'ONGOING',
+  },
+  {
+    id: 'condition-018',
+    patientId: 'patient-011',
+    condition: 'Hypertension',
+    chronic: true,
+    diagnosedSince: '2017',
+    status: 'ONGOING',
+  },
+  {
+    id: 'condition-019',
+    patientId: 'patient-011',
+    condition: 'Type 2 Diabetes',
+    chronic: true,
+    diagnosedSince: '2019',
+    status: 'ONGOING',
+  },
+  {
+    id: 'condition-020',
+    patientId: 'patient-011',
+    condition: 'Asthma',
+    chronic: true,
+    diagnosedSince: '2020',
+    status: 'ONGOING',
+  },
 ];
 
 // ── Prescriptions ─────────────────────────────────────────────────────────────
 
 export const MOCK_PRESCRIPTIONS: Prescription[] = [
-  // Priya Mehta — HIGH RISK combination
-  // Warfarin + Aspirin     → HIGH drug-drug interaction
-  // Warfarin + Ibuprofen   → HIGH drug-drug interaction
-  // Aspirin + Ibuprofen    → LOW drug-drug interaction
+  // Priya Mehta (patient-001) — HIGH RISK combination
   {
     id: 'rx-001',
     patientId: 'patient-001',
@@ -430,9 +627,29 @@ export const MOCK_PRESCRIPTIONS: Prescription[] = [
     status: 'ACTIVE',
     prescribedBy: 'Dr. Arjun Sharma',
   },
-  // Arjun Singh
+  // Arjun Singh (patient-002)
   {
     id: 'rx-006',
+    patientId: 'patient-002',
+    drug: 'Warfarin',
+    dose: '5mg',
+    frequency: '1/day',
+    startDate: '2021-05-01',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Priya Rajan',
+  },
+  {
+    id: 'rx-007',
+    patientId: 'patient-002',
+    drug: 'Aspirin',
+    dose: '75mg',
+    frequency: '1/day',
+    startDate: '2022-01-01',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Priya Rajan',
+  },
+  {
+    id: 'rx-008',
     patientId: 'patient-002',
     drug: 'Atorvastatin',
     dose: '20mg',
@@ -442,7 +659,7 @@ export const MOCK_PRESCRIPTIONS: Prescription[] = [
     prescribedBy: 'Dr. Priya Rajan',
   },
   {
-    id: 'rx-007',
+    id: 'rx-009',
     patientId: 'patient-002',
     drug: 'Metoprolol',
     dose: '25mg',
@@ -452,7 +669,7 @@ export const MOCK_PRESCRIPTIONS: Prescription[] = [
     prescribedBy: 'Dr. Priya Rajan',
   },
   {
-    id: 'rx-008',
+    id: 'rx-010',
     patientId: 'patient-002',
     drug: 'Amlodipine',
     dose: '5mg',
@@ -461,19 +678,9 @@ export const MOCK_PRESCRIPTIONS: Prescription[] = [
     status: 'ACTIVE',
     prescribedBy: 'Dr. Priya Rajan',
   },
+  // Sunita Patel (patient-003)
   {
-    id: 'rx-009',
-    patientId: 'patient-002',
-    drug: 'Metformin',
-    dose: '1000mg',
-    frequency: '2/day',
-    startDate: '2020-06-01',
-    status: 'ACTIVE',
-    prescribedBy: 'Dr. Priya Rajan',
-  },
-  // Sunita Patel
-  {
-    id: 'rx-010',
+    id: 'rx-011',
     patientId: 'patient-003',
     drug: 'Salbutamol',
     dose: '100mcg',
@@ -483,7 +690,7 @@ export const MOCK_PRESCRIPTIONS: Prescription[] = [
     prescribedBy: 'Dr. Kavita Mehta',
   },
   {
-    id: 'rx-011',
+    id: 'rx-012',
     patientId: 'patient-003',
     drug: 'Montelukast',
     dose: '10mg',
@@ -492,12 +699,181 @@ export const MOCK_PRESCRIPTIONS: Prescription[] = [
     status: 'ACTIVE',
     prescribedBy: 'Dr. Kavita Mehta',
   },
+  // Ravi Kumar (patient-004) — Prescribed Amoxicillin while allergic to Penicillin!
+  {
+    id: 'rx-013',
+    patientId: 'patient-004',
+    drug: 'Metformin',
+    dose: '500mg',
+    frequency: '2/day',
+    startDate: '2025-12-01',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Arjun Sharma',
+  },
+  {
+    id: 'rx-014',
+    patientId: 'patient-004',
+    drug: 'Amlodipine',
+    dose: '5mg',
+    frequency: '1/day',
+    startDate: '2021-03-10',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Arjun Sharma',
+  },
+  {
+    id: 'rx-015',
+    patientId: 'patient-004',
+    drug: 'Amoxicillin',
+    dose: '250mg',
+    frequency: '3/day',
+    startDate: '2026-09-10',
+    endDate: '2026-09-20',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Arjun Sharma',
+  },
+  // Anita Sharma (patient-005)
+  {
+    id: 'rx-016',
+    patientId: 'patient-005',
+    drug: 'Salbutamol',
+    dose: '2 puffs',
+    frequency: 'As needed',
+    startDate: '2020-01-01',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Arjun Sharma',
+  },
+  // Neha Verma (patient-006)
+  {
+    id: 'rx-017',
+    patientId: 'patient-006',
+    drug: 'Levothyroxine',
+    dose: '50mcg',
+    frequency: '1/day',
+    startDate: '2020-03-01',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Sunita Rao',
+  },
+  // Karan Singh (patient-007)
+  {
+    id: 'rx-018',
+    patientId: 'patient-007',
+    drug: 'Aspirin',
+    dose: '75mg',
+    frequency: '1/day',
+    startDate: '2011-01-01',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Rajesh Khanna',
+  },
+  {
+    id: 'rx-019',
+    patientId: 'patient-007',
+    drug: 'Atorvastatin',
+    dose: '20mg',
+    frequency: '1/day',
+    startDate: '2012-06-01',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Rajesh Khanna',
+  },
+  // Manoj Das (patient-008)
+  {
+    id: 'rx-020',
+    patientId: 'patient-008',
+    drug: 'Insulin',
+    dose: '10 units',
+    frequency: '2/day',
+    startDate: '2016-06-01',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Manoj Patil',
+  },
+  {
+    id: 'rx-021',
+    patientId: 'patient-008',
+    drug: 'Metformin',
+    dose: '500mg',
+    frequency: '2/day',
+    startDate: '2018-02-15',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Manoj Patil',
+  },
+  // Sneha Roy (patient-009)
+  {
+    id: 'rx-022',
+    patientId: 'patient-009',
+    drug: 'Sumatriptan',
+    dose: '50mg',
+    frequency: 'As needed',
+    startDate: '2022-08-01',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Manoj Patil',
+  },
+  // Vikram Iyer (patient-010)
+  {
+    id: 'rx-023',
+    patientId: 'patient-010',
+    drug: 'Ibuprofen',
+    dose: '400mg',
+    frequency: '2/day',
+    startDate: '2026-01-05',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Suresh Nair',
+  },
+  // Rajesh Gupta (patient-011) — MULTIPLE SEVERE INTERACTIONS
+  {
+    id: 'rx-024',
+    patientId: 'patient-011',
+    drug: 'Warfarin',
+    dose: '5mg',
+    frequency: '1/day',
+    startDate: '2016-11-01',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Rajiv Anand',
+  },
+  {
+    id: 'rx-025',
+    patientId: 'patient-011',
+    drug: 'Aspirin',
+    dose: '100mg',
+    frequency: '1/day',
+    startDate: '2017-02-15',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Rajiv Anand',
+  },
+  {
+    id: 'rx-026',
+    patientId: 'patient-011',
+    drug: 'Ibuprofen',
+    dose: '400mg',
+    frequency: '3/day',
+    startDate: '2025-12-20',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Rajiv Anand',
+  },
+  {
+    id: 'rx-027',
+    patientId: 'patient-011',
+    drug: 'Clopidogrel',
+    dose: '75mg',
+    frequency: '1/day',
+    startDate: '2018-06-01',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Rajiv Anand',
+  },
+  {
+    id: 'rx-028',
+    patientId: 'patient-011',
+    drug: 'Metformin',
+    dose: '850mg',
+    frequency: '2/day',
+    startDate: '2019-08-01',
+    status: 'ACTIVE',
+    prescribedBy: 'Dr. Rajiv Anand',
+  },
 ];
 
 // ── Lab Reports ───────────────────────────────────────────────────────────────
 
 export const MOCK_LAB_REPORTS: LabReport[] = [
-  // Priya Mehta
+  // Priya Mehta (patient-001)
   {
     id: 'lab-001',
     patientId: 'patient-001',
@@ -554,7 +930,7 @@ export const MOCK_LAB_REPORTS: LabReport[] = [
     reportDate: '2026-09-11',
     isAbnormal: false,
   },
-  // Arjun Singh
+  // Arjun Singh (patient-002)
   {
     id: 'lab-006',
     patientId: 'patient-002',
@@ -584,6 +960,135 @@ export const MOCK_LAB_REPORTS: LabReport[] = [
     unit: 'mg/dL',
     status: 'HIGH',
     testDate: '2026-08-15',
+    isAbnormal: true,
+  },
+  // Sunita Patel (patient-003)
+  {
+    id: 'lab-009',
+    patientId: 'patient-003',
+    testName: 'Peak Flow Rate',
+    value: '420',
+    unit: 'L/min',
+    status: 'NORMAL',
+    testDate: '2026-07-01',
+    isAbnormal: false,
+  },
+  // Ravi Kumar (patient-004)
+  {
+    id: 'lab-010',
+    patientId: 'patient-004',
+    testName: 'Serum Creatinine',
+    value: '2.1',
+    unit: 'mg/dL',
+    status: 'HIGH',
+    testDate: '2026-08-12',
+    isAbnormal: true,
+  },
+  {
+    id: 'lab-011',
+    patientId: 'patient-004',
+    testName: 'Blood Sugar Fasting',
+    value: '160',
+    unit: 'mg/dL',
+    status: 'HIGH',
+    testDate: '2026-08-12',
+    isAbnormal: true,
+  },
+  // Anita Sharma (patient-005)
+  {
+    id: 'lab-012',
+    patientId: 'patient-005',
+    testName: 'Peak Flow',
+    value: '350',
+    unit: 'L/min',
+    status: 'LOW',
+    testDate: '2026-09-01',
+    isAbnormal: true,
+  },
+  // Neha Verma (patient-006)
+  {
+    id: 'lab-013',
+    patientId: 'patient-006',
+    testName: 'TSH',
+    value: '8.5',
+    unit: 'µIU/mL',
+    status: 'HIGH',
+    testDate: '2026-08-25',
+    isAbnormal: true,
+  },
+  // Karan Singh (patient-007)
+  {
+    id: 'lab-014',
+    patientId: 'patient-007',
+    testName: 'ECG',
+    value: 'Ischemic ST-T changes',
+    unit: '',
+    status: 'CRITICAL',
+    testDate: '2026-09-05',
+    isAbnormal: true,
+  },
+  {
+    id: 'lab-015',
+    patientId: 'patient-007',
+    testName: 'Total Cholesterol',
+    value: '280',
+    unit: 'mg/dL',
+    status: 'HIGH',
+    testDate: '2026-09-05',
+    isAbnormal: true,
+  },
+  // Manoj Das (patient-008)
+  {
+    id: 'lab-016',
+    patientId: 'patient-008',
+    testName: 'HbA1c',
+    value: '9.2',
+    unit: '%',
+    status: 'HIGH',
+    testDate: '2026-09-12',
+    isAbnormal: true,
+  },
+  // Sneha Roy (patient-009)
+  {
+    id: 'lab-017',
+    patientId: 'patient-009',
+    testName: 'Complete Blood Count',
+    value: 'Within normal limits',
+    unit: '',
+    status: 'NORMAL',
+    testDate: '2026-09-15',
+    isAbnormal: false,
+  },
+  // Vikram Iyer (patient-010)
+  {
+    id: 'lab-018',
+    patientId: 'patient-010',
+    testName: 'C-Reactive Protein (CRP)',
+    value: '12',
+    unit: 'mg/L',
+    status: 'HIGH',
+    testDate: '2026-09-18',
+    isAbnormal: true,
+  },
+  // Rajesh Gupta (patient-011)
+  {
+    id: 'lab-019',
+    patientId: 'patient-011',
+    testName: 'ECG',
+    value: 'Abnormal Q-waves in V1-V3',
+    unit: '',
+    status: 'CRITICAL',
+    testDate: '2026-09-22',
+    isAbnormal: true,
+  },
+  {
+    id: 'lab-020',
+    patientId: 'patient-011',
+    testName: 'INR',
+    value: '3.6',
+    unit: '',
+    status: 'HIGH',
+    testDate: '2026-09-22',
     isAbnormal: true,
   },
 ];

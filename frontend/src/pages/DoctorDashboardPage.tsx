@@ -252,8 +252,13 @@ export const DoctorDashboardPage: React.FC<DoctorDashboardProps> = ({
   };
 
   const getRiskTag = (abhaId: string) => {
-    if (abhaId.includes('PM001') || abhaId === 'ABHA001') return { label: 'HIGH RISK', bg: '#fef2f2', border: '#fecaca', color: '#dc2626' };
-    if (abhaId.includes('AS002') || abhaId === 'ABHA002') return { label: 'MEDIUM RISK', bg: '#fffbeb', border: '#fef3c7', color: '#b45309' };
+    const id = abhaId.toUpperCase();
+    if (id.includes('PM001') || id.includes('RK004') || id.includes('AS002') || id.includes('RG011') || id === 'ABHA001' || id === 'ABHA003' || id === 'ABHA011') {
+      return { label: 'HIGH RISK', bg: '#fef2f2', border: '#fecaca', color: '#dc2626' };
+    }
+    if (id.includes('KS007') || id.includes('MD008') || id.includes('VI010') || id === 'ABHA005' || id === 'ABHA007' || id === 'ABHA009') {
+      return { label: 'MEDIUM RISK', bg: '#fffbeb', border: '#fef3c7', color: '#b45309' };
+    }
     return { label: 'SAFE', bg: '#f0fdf4', border: '#bbf7d0', color: '#15803d' };
   };
 

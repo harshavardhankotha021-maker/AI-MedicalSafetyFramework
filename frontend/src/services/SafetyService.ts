@@ -11,6 +11,7 @@
  *   AI-GENERATED (NER)          → flagged via nerUsed = true
  */
 
+import { api } from '../api/client';
 import type { DataService } from './DataService';
 import type { SafetyAnalysisRequest, SafetyAnalysisResult } from './types';
 
@@ -19,34 +20,51 @@ const API_BASE = '/api';
 export const SafetyService = {
   /**
    * Run the safety pipeline on provided lists.
-   * Calls POST /analyse/direct on the FastAPI backend.
+   * Calls POST /analyse/direct on the FastAPI backend, or falls back to client rule engine.
    */
   async analyseFromLists(req: SafetyAnalysisRequest): Promise<SafetyAnalysisResult> {
-    const response = await fetch(`${API_BASE}/analyse/direct`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        drugs:      req.drugs,
+    try {
+      const response = await fetch(`${API_BASE}/analyse/direct`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          drugs:      req.drugs,
+          conditions: req.conditions,
+          allergies:  req.allergies ?? [],
+          use_ner:    req.useNer ?? true,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Backend direct analysis failed: ' + response.statusText);
+      }
+
+      const data = await response.json();
+      return {
+        extractedDrugs:    data.extracted_drugs,
+        extractedDiseases: data.extracted_diseases,
+        drugDrugAlerts:    data.drug_drug_alerts,
+        diseaseDrugAlerts: data.disease_drug_alerts,
+        overallRisk:       data.overall_risk,
+        nerUsed:           data.ner_used,
+      };
+    } catch {
+      // Fallback to client safety rule engine (mock mode)
+      const data = await api.analyseDirect({
+        drugs: req.drugs,
         conditions: req.conditions,
-        allergies:  req.allergies ?? [],
-        use_ner:    req.useNer ?? true,
-      }),
-    });
-
-    if (!response.ok) {
-      const err = await response.json().catch(() => ({ detail: response.statusText }));
-      throw new Error(err.detail ?? 'Safety analysis request failed');
+        allergies: req.allergies ?? [],
+        use_ner: req.useNer ?? false,
+      });
+      return {
+        extractedDrugs:    data.extracted_drugs,
+        extractedDiseases: data.extracted_diseases,
+        drugDrugAlerts:    data.drug_drug_alerts,
+        diseaseDrugAlerts: data.disease_drug_alerts,
+        overallRisk:       data.overall_risk,
+        nerUsed:           data.ner_used,
+      };
     }
-
-    const data = await response.json();
-    return {
-      extractedDrugs:    data.extracted_drugs,
-      extractedDiseases: data.extracted_diseases,
-      drugDrugAlerts:    data.drug_drug_alerts,
-      diseaseDrugAlerts: data.disease_drug_alerts,
-      overallRisk:       data.overall_risk,
-      nerUsed:           data.ner_used,
-    };
   },
 
   /**

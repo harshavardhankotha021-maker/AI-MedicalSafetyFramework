@@ -32,18 +32,17 @@ export function AnalysePage({ initialAbhaId, onBackToDoctorPortal }: AnalysePage
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (initialAbhaId) {
-      handleAnalyse(initialAbhaId);
-    }
+    const targetId = initialAbhaId || selectedId || "JR-2026-PM001";
+    handleAnalyse(targetId);
   }, [initialAbhaId]);
 
-  async function handleAnalyse(abhaId: string) {
+  async function handleAnalyse(abhaId: string, nerOverride?: boolean) {
+    const currentNer = nerOverride !== undefined ? nerOverride : useNer;
     setSelectedId(abhaId);
     setLoading(true);
     setError(null);
-    setResult(null);
     try {
-      const data = await api.analysePatient(abhaId, useNer);
+      const data = await api.analysePatient(abhaId, currentNer);
       setResult(data);
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : "Unknown error");
@@ -136,7 +135,13 @@ export function AnalysePage({ initialAbhaId, onBackToDoctorPortal }: AnalysePage
                   id="ner-toggle"
                   type="checkbox"
                   checked={useNer}
-                  onChange={(e) => setUseNer(e.target.checked)}
+                  onChange={(e) => {
+                    const nextVal = e.target.checked;
+                    setUseNer(nextVal);
+                    if (selectedId) {
+                      handleAnalyse(selectedId, nextVal);
+                    }
+                  }}
                   style={{ opacity: 0, width: 0, height: 0 }}
                 />
                 <span

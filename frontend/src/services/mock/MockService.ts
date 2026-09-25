@@ -74,10 +74,38 @@ export class MockService implements DataService {
       this.healthCards = loadStorage<HealthCard[]>(STORAGE_KEYS.HEALTH_CARDS, MOCK_HEALTH_CARDS);
       this.qrTokens = loadStorage<QRToken[]>(STORAGE_KEYS.QR_TOKENS, MOCK_QR_TOKENS);
     }
-    this.prescriptions = loadStorage<Prescription[]>(STORAGE_KEYS.PRESCRIPTIONS, MOCK_PRESCRIPTIONS);
-    this.allergies = loadStorage<Allergy[]>(STORAGE_KEYS.ALLERGIES, MOCK_ALLERGIES);
-    this.conditions = loadStorage<Condition[]>(STORAGE_KEYS.CONDITIONS, MOCK_CONDITIONS);
-    this.labReports = loadStorage<LabReport[]>(STORAGE_KEYS.LAB_REPORTS, MOCK_LAB_REPORTS);
+    const storedPrescriptions = loadStorage<Prescription[]>(STORAGE_KEYS.PRESCRIPTIONS, MOCK_PRESCRIPTIONS);
+    if (storedPrescriptions.length < MOCK_PRESCRIPTIONS.length) {
+      this.prescriptions = MOCK_PRESCRIPTIONS;
+      saveStorage(STORAGE_KEYS.PRESCRIPTIONS, MOCK_PRESCRIPTIONS);
+    } else {
+      this.prescriptions = storedPrescriptions;
+    }
+
+    const storedAllergies = loadStorage<Allergy[]>(STORAGE_KEYS.ALLERGIES, MOCK_ALLERGIES);
+    if (storedAllergies.length < MOCK_ALLERGIES.length) {
+      this.allergies = MOCK_ALLERGIES;
+      saveStorage(STORAGE_KEYS.ALLERGIES, MOCK_ALLERGIES);
+    } else {
+      this.allergies = storedAllergies;
+    }
+
+    const storedConditions = loadStorage<Condition[]>(STORAGE_KEYS.CONDITIONS, MOCK_CONDITIONS);
+    if (storedConditions.length < MOCK_CONDITIONS.length) {
+      this.conditions = MOCK_CONDITIONS;
+      saveStorage(STORAGE_KEYS.CONDITIONS, MOCK_CONDITIONS);
+    } else {
+      this.conditions = storedConditions;
+    }
+
+    const storedLabReports = loadStorage<LabReport[]>(STORAGE_KEYS.LAB_REPORTS, MOCK_LAB_REPORTS);
+    if (storedLabReports.length < MOCK_LAB_REPORTS.length) {
+      this.labReports = MOCK_LAB_REPORTS;
+      saveStorage(STORAGE_KEYS.LAB_REPORTS, MOCK_LAB_REPORTS);
+    } else {
+      this.labReports = storedLabReports;
+    }
+
     this.emergencyContacts = loadStorage<EmergencyContact[]>(STORAGE_KEYS.EMERGENCY_CONTACTS, MOCK_EMERGENCY_CONTACTS);
     this.auditLogs = loadStorage<AuditLog[]>(STORAGE_KEYS.AUDIT_LOGS, MOCK_AUDIT_LOGS);
   }
